@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  <div class="main-container">
+
+    <div class="page-header">
+      <h1 class="page-title">Transaction History</h1>
+      <p class="page-subtitle">All deposits, withdrawals, and transfers on your account.</p>
+    </div>
+
+    <div class="transaction-card">
+      {% if transactions %}
+
+        {% for transaction in transactions%}
+        
+          <div class="transaction-row">
+
+            <div class="transaction-info">
+              <span class="transaction-title">
+                {{ transaction.label }}
+
+                {% if transaction.counterparty %}
+                  {{ "to" if transaction.direction == "Debit" else "from" }} {{ transaction.counterparty.username }}
+                {% endif %}
+              </span>
+
+              <span class="transaction-date">
+                {{ transaction.transaction_date.strftime('%d %b %Y, %I:%M %p') }} || {{ transaction.remarks }}
+              </span>
+            </div>
+
+            <span class="transaction-amount {{ 'positive' if transaction.direction == 'Credit' else 'negative' }}">
+              {{ '+' if transaction.direction == 'Credit' else '-' }} Rs {{ "{:,.2f}".format(transaction.amount) }}
+            </span>
+
+          </div>
+
+        {% endfor %}
+
+      {% else %}
+        <div class="transaction-empty">No transactions yet.</div>
+      {% endif %}
+
+
+    </div>
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+  <div class="main-container">
+
+    {% include "includes/_messages.html" %}
+    <div class="dashboard-header">
+      <h1 class="greeting">Welcome back, {{ session.get('first_name')}}</h1>
+      <p class="subtitle">Here is an overview of your account.</p>
+    </div>
+
+    <div class="balance-card">
+      <span class="card-label">{{ account_num }}</span>
+      <span class="card-label">Current balance</span>
+      
+      <!-- We will pass 'balance' from the backend route -->
+      <h2 class="card-balance">Rs {{ "{:,.2f}".format(balance) }}</h2>
+      
+      <span class="card-footer">Main Savings Account</span>
+    </div>
+
+    <!-- Qucik Action -->
+    <div class="action-buttons">
+      <a href="{{ url_for('transactions.deposit') }}" class="action-btn deposit-btn">
+          <span class="action-icon">&#8595;</span> Deposit
+      </a>
+      <a href="{{ url_for('transactions.withdraw') }}" class="action-btn withdraw-btn">
+          <span class="action-icon">&#8593;</span> Withdraw
+      </a>
+      <a href="{{ url_for('main.transfer') }}" class="action-btn transfer-btn">
+          <span class="action-icon">&#8646;</span> Transfer
+      </a>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="transactions-section">
+      <div class="transactions-header">
+        <h3> Recent Transactions </h3>
+        <a href="{{ url_for('main.history') }}" class="see-more">See more </a>
+      </div>
+
+      {% if transactions %}
+
+        {% for transaction in transactions %}
+
+          <div class="transaction-row">
+
+            <div class="transaction-info">
+              <span class="transaction-title">
+                {{ transaction.label }}
+
+                {% if transaction.counterparty %}
+                  {{ "to" if transaction.direction == "Debit" else "from" }} {{ transaction.counterparty.username }}
+                {% endif %}
+              </span>
+              
+              <span class="transaction-date">
+                {{ transaction.transaction_date.strftime('%d %b %Y, %I:%M %p') }} || {{ transaction.remarks }}
+            </span>
+            </div>
+
+            <span class="transaction-amount {{ 'positive' if transaction.direction == 'Credit' else 'negative' }}">
+              {{ '+' if transaction.direction == 'Credit' else '-' }} Rs {{ "{:,.2f}".format(transaction.amount) }}
+            </span>
+
+          </div>
+
+        {% endfor %}
+
+      {% else %}
+        <div class="transaction-empty">No transactions yet.</div>
+      {% endif %}
+
+    </div>
+
+  </div>
+  
+{% endblock %}

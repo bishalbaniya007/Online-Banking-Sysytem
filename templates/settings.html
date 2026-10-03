@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <div class="main-container">
+
+    <div class="page-header">
+      <h1 class="page-title">Settings</h1>
+      <p class="page-subtitle">Choose your account settings.</p>
+    </div>
+
+    <div class="menu-options">
+      {% include "includes/_messages.html" %}
+      <a href="{{ url_for("settings.account_details") }}" class="btn-menu">
+        <h3>🏦 Account Details</h3>
+        <p>View your account number and balance summary.</p>
+      </a>
+
+      <a href="{{ url_for("settings.change_password") }}" class="btn-menu">
+        <h3>🔒 Change Password</h3>
+        <p>Update the password you use to log in.</p>
+      </a>
+
+      <a href="{{ url_for("settings.change_pin" )}}" class="btn-menu">
+        <h3>🔢 Change Transaction PIN</h3>
+        <p>Update your 4-digit PIN used to authorize transactions.</p>
+      </a>
+
+      <a href="{{ url_for("settings.update_profile", user_id=session.get('user_id')) }}" class="btn-menu">
+        <h3>👤 Update Profile</h3>
+        <p>Edit your name, email, or phone number.</p>
+      </a>
+
+      <a href="#}" class="btn-menu btn-menu-danger">
+        <h3>🗑️ Delete Account</h3>
+        <p>Permanently close your account and remove your data.</p>
+      </a>
+
+    </div>
+
+  </div>  
+
+{% endblock %}

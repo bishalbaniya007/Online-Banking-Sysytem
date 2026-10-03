@@ -1,0 +1,44 @@
+{% extends "form_card.html" %}
+
+{% block page_header %}
+
+  {% if transaction_type == "deposit" %}
+    <h1 class="page-title">Deposit Funds</h1>
+    <p class="page-subtitle">Deposit money to your savings account.</p>
+
+  {% else %}
+    <h1 class="page-title">Withdraw Funds</h1>
+    <p class="page-subtitle">Withdraw money from your savings account.</p>
+
+  {% endif %}
+
+{% endblock %}
+
+
+{% block page_content %}
+  {% from "includes/_formhelpers.html" import render_field %}
+  {% include "includes/_messages.html" %}
+
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    
+    <div class="form-group">
+      {{ render_field(form.amount, class_="form-control", placeholder="0.00") }}
+    </div>
+
+    <div class="form-group">
+      {{ render_field(form.remarks, class_="form-control", placeholder="Add a short note") }}
+    </div>
+
+    <div class="form-group">
+      {{ render_field(form.transaction_pin, class_="form-control", placeholder="Enter 4-digit PIN", type="password") }}
+    </div>
+
+    {% if transaction_type == "deposit" %}
+      <button type="submit" class="btn btn-primary btn-block">Confirm Deposit</button>
+    {% else %}
+      <button type="submit" class="btn btn-primary btn-block">Confirm Withdraw</button>
+    {% endif %}
+  </form>
+    
+{% endblock %}

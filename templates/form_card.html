@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block body %} 
+
+  <div class="main-container">
+
+    <div class="page-header">
+      {% block page_header %}
+      {% endblock%}
+    </div>
+
+    <div class="transaction-card">
+      {% block page_content %}
+      {% endblock %}
+    </div>
+
+  </div>
+  
+{% endblock %}

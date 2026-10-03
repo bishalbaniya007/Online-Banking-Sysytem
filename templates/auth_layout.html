@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}} | CapitalBank</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+  
+  <div class="auth-layout">
+    <!-- Left Blue Branding Panel -->
+    <div class="auth-banner">
+        <div class="auth-logo-wrapper">
+            <div class="auth-logo">C</div>
+            <span class="auth-brand">Capital Bank</span>
+        </div>
+        
+        <div class="auth-banner-content">
+            {% block auth_banner_content %}
+              <!-- Left side text -->
+            {% endblock %}
+        </div>
+    </div>
+
+      <!-- Right White Form Panel -->
+      <div class="auth-form-container">
+
+          <div class="auth-form-wrapper">
+            {% block auth_body %}  
+
+            {% endblock%}
+          </div>
+      </div>
+  </div>
+  
+  <script src="{{ url_for('static', filename='js/flash-messages.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/toggle-password.js') }}"></script>
+  
+</body>
+</html>

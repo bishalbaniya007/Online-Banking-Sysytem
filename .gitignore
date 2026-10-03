@@ -1,0 +1,22 @@
+# Operating System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Python environments and caches
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# IDE / Editor configurations
+.vscode/
+.idea/
+
+# Environment variables
+.env

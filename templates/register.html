@@ -1,0 +1,58 @@
+{% extends "auth_layout.html" %}
+
+{% block auth_banner_content %}
+    <p class="auth-eyebrow">ONLINE BANKING SIMULATOR</p>
+    <h1 class="auth-heading">Create your account.</h1>
+    <p class="auth-subtext">No real money or account information is involved.</p>
+{% endblock %}
+
+{% block auth_body %}
+    {% from "includes/_formhelpers.html" import render_field %}
+    
+    <h2 class="auth-title">Register</h2>
+    <p class="auth-subtitle">Enter your details.</p>
+
+    {% include "includes/_messages.html" %}
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }} <!-- hidden_tag() renders the hidden csrf_token input -->
+        <div class="form-group">
+            {{ render_field(form.first_name, class_="form-control", placeholder="Enter your first name") }}
+        </div>
+        
+        <div class="form-group">
+            {{ render_field(form.last_name, class_="form-control", placeholder="Enter your last name") }}
+        </div>
+
+        <div class="form-group">
+            {{ render_field(form.username, class_="form-control", placeholder="Choose a username") }}
+        </div>
+
+        <div class="form-group">
+            {{ render_field(form.email, class_="form-control", placeholder="you@example.com") }}
+        </div>
+
+        <div class="form-group">
+            {{ render_field(form.phone, class_="form-control", placeholder="98XXXXXXXX") }}
+        </div>
+
+        <div class="form-group">
+            {{ render_field(form.password, class_="form-control", placeholder="Create a password") }}
+        </div>
+
+        <div class="form-group">
+            {{ render_field(form.confirm_password, class_="form-control", placeholder="Confirm your password") }}
+        </div>
+
+        <div class="form-group">
+            {{ render_field(form.transaction_pin, class_="form-control", placeholder="4-digit PIN") }}
+        </div>
+
+        <button type="submit" class="auth-submit-btn">Create Account</button>
+        
+        <div class="auth-footer-link">
+            <a href="{{ url_for('auth.login') }}">Already have an account? Log in</a>
+        </div>
+
+    </form>
+{% endblock %}

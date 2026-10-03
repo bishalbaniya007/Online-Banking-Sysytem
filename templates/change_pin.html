@@ -1,0 +1,30 @@
+{%extends "form_card.html" %}
+
+{% block page_header %}
+  <h1 class="page-title"> Change Transaction Pin </h1>
+  <p class="page-subtitle">Update your 4-digit PIN used to authorize transactions.</p>
+{% endblock %}
+
+{% block page_content %}
+
+  {% from "includes/_formhelpers.html" import render_field %}
+  {% include "includes/_messages.html" %}
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    
+    <div class="form-group">
+      {{ render_field(form.current_pin, class_="form-control", placeholder="Enter your current 4-digit pin.") }}
+    </div>
+
+    <div class="form-group">
+      {{ render_field(form.new_transaction_pin, class_="form-control", placeholder="Enter your 4-digit pin.") }}
+    </div>
+
+    <div class="form-group">
+      {{ render_field(form.confirm_pin, class_="form-control", placeholder="Confirm your new pin.") }}
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block"> Confirm </button>
+  </form>
+
+{% endblock %}

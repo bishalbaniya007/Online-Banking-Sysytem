@@ -1,0 +1,41 @@
+{% extends "form_card.html" %}
+
+{% block page_header %}
+  <h2 class="page-title">Update Profile </h2>
+  <p class="page-subtitle">Edit your name, email, or phone number.</p> 
+{% endblock %}
+
+{% block page_content %}
+
+  {% include "includes/_messages.html" %}
+  {% from "includes/_formhelpers.html" import render_field %}
+  
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    
+    <div class="form-group">
+      {{ render_field(form.first_name, class_="form-control", placeholder="Enter your first name.") }}
+    </div>
+
+    <div class="form-group">
+      {{ render_field(form.last_name, class_="form-control", placeholder="Enter your last name.") }}
+    </div>
+
+    <div class="form-group">
+      {{ render_field(form.username, class_="form-control", placeholder="Enter your username.") }}
+    </div>
+
+    <div class="form-group">
+      {{ render_field(form.email, class_="form-control", placeholder="Enter your email.") }}
+    </div>
+
+    <div class="form-group">
+      {{ render_field(form.phone, class_="form-control", placeholder="Enter your phone number.") }}
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block"> Update </button>
+  </form>
+
+
+{% endblock %}
+

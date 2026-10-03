@@ -1,0 +1,52 @@
+.page-header { 
+  margin-bottom: 24px; 
+  max-width: 700px; 
+}
+
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+    margin-top: 0;
+}
+
+.page-subtitle { 
+  font-size: 18px; 
+  color: #64748b; 
+  margin-top: 0; 
+}
+
+.transaction-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 32px;
+    max-width: 700px;
+}
+
+.form-group { margin-bottom: 24px; }
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.btn-block {
+    width: 100%;
+    background-color: #1a73e8;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-block:hover { background-color: #1557b0; }

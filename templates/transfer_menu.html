@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="transfer-menu-container">
+    <h2>Choose Transfer Option</h2>
+    <p>How would you like to send money?</p>
+    
+    <div class="menu-options">
+        <a href="{{ url_for('transactions.transfer_account') }}" class="btn-menu">
+            <h3>💳 Transfer via Account Number</h3>
+            <p>Send money using a standard 16-digit bank account number.</p>
+        </a>
+
+        <a href="{{ url_for('transactions.transfer_phone') }}" class="btn-menu">
+            <h3>📱 Transfer via Phone Number</h3>
+            <p>Send money instantly using the recipient's 10-digit mobile number.</p>
+        </a>
+    </div>
+</div>
+{% endblock %}

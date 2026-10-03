@@ -1,0 +1,41 @@
+<nav class="navbar">
+    <div class="navbar-left">
+        <div class="base-logo-box">C</div>
+        <span class="brand-name">Capital Bank</span>
+    </div>
+
+    <div class="navbar-center">
+        <a href="{{ url_for('main.dashboard') }}" 
+           class="nav-link {{ "active" if request.endpoint == "main.dashboard" }}"> 
+           Dashboard </a>
+
+        <a href="{{ url_for('main.transfer') }}" 
+           class="nav-link {{ "active" if request.endpoint in ["main.transfer", "transactions.transfer_account", 
+           "transactions.transfer_phone"] }}">
+            Transfer Money </a>
+
+        <a href="{{ url_for('main.history') }}" 
+           class="nav-link {{ "active" if request.endpoint == "main.history" }}">
+           Transaction History</a>
+
+        <a href="{{ url_for('main.settings') }}" 
+           class="nav-link {{ "active" if request.endpoint == "main.settings" }}">Settings</a>
+    </div>
+
+    <div class="navbar-right">
+
+        <form method="POST" class="logout-form"
+            action={{ url_for('auth.logout') }}>
+            <input type="hidden" name="csrf_token" value={{csrf_token()}}>
+            <button type="submit" class="nav-link logout-btn">Logout</button>           
+        </form>
+        
+        <div class="user-avatar">
+            {{ session.get('first_name')[0].upper() + session.get('last_name')[0].upper() }}
+        </div>
+        <div class="user-info">
+            <span class="user-name">{{ session.get('username') }}</span>
+            <span class="user-role">Personal account</span>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,27 @@
+{% macro render_field(field) %}
+
+    {{ field.label }}
+
+    {% if field.type == "PasswordField" %}
+        <div class="password-wrapper">
+            {{ field(**kwargs)|safe }}
+
+            <button type="button" class="toggle-password" aria-label="Show password">
+                <span class="eye-icon">👁️</span>
+            </button>
+        </div>
+
+    {% else %}
+        {{ field(**kwargs)|safe }}
+
+    {% endif %}
+
+    {% if field.errors %}
+
+        {% for error in field.errors %}
+            <span class="help-inline" style="color:red;">{{ error }}</span> <!-- help-inline is bootstrap class-->
+        {% endfor %}
+
+    {% endif %}
+
+{% endmacro %}
